@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autowire: true
+        public: false
+
+    LoremIpsum\PermissionCheckerBundle\PermissionChecker:
+        class: LoremIpsum\PermissionCheckerBundle\PermissionChecker

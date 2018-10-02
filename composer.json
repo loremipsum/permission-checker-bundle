@@ -1,0 +1,21 @@
+{
+    "name": "loremipsum/permission-checker-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony PermissionCheckerBundle",
+    "keywords": ["router"],
+    "homepage": "https://www.loremipsum.at",
+    "license": "proprietary",
+    "require": {
+        "php": ">=7.0",
+        "symfony/http-foundation": "^3.4 || ^4.0",
+        "symfony/framework-bundle": "^3.4 || ^4.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": { "LoremIpsum\\PermissionCheckerBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}
