@@ -32,8 +32,8 @@ class PermissionChecker implements PermissionCheckerInterface
 
     /**
      * @param AuthorizationCheckerInterface $securityChecker
-     * @param TokenStorageInterface         $tokenStorage
-     * @param EntityManagerInterface        $em
+     * @param TokenStorageInterface $tokenStorage
+     * @param EntityManagerInterface $em
      */
     public function __construct(AuthorizationCheckerInterface $securityChecker, TokenStorageInterface $tokenStorage, EntityManagerInterface $em)
     {
@@ -58,8 +58,7 @@ class PermissionChecker implements PermissionCheckerInterface
 
     public function isAdmin()
     {
-        return $this->hasRole(User::ROLE_ADMIN)
-            || $this->isSuperAdmin();
+        return $this->hasRole(User::ROLE_ADMIN) || $this->isSuperAdmin();
     }
 
     public function isSuperAdmin()
@@ -90,7 +89,7 @@ class PermissionChecker implements PermissionCheckerInterface
      * @param string $role
      * @return bool
      */
-    private function hasRole($role)
+    public function hasRole($role)
     {
         return $this->securityChecker->isGranted($role);
     }

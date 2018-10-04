@@ -3,5 +3,11 @@ services:
         autowire: true
         public: false
 
+    LoremIpsum\PermissionCheckerBundle\PermissionCheckerInterface: '@LoremIpsum\PermissionCheckerBundle\PermissionChecker'
+
     LoremIpsum\PermissionCheckerBundle\PermissionChecker:
         class: LoremIpsum\PermissionCheckerBundle\PermissionChecker
+
+    LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension:
+        class: LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension
+        tags: ['twig.extension']
