@@ -42,6 +42,16 @@ class PermissionChecker implements PermissionCheckerInterface
         $this->em              = $em;
     }
 
+    public function getSecurityChecker()
+    {
+        return $this->securityChecker;
+    }
+
+    public function getTokenStorage()
+    {
+        return $this->tokenStorage;
+    }
+
     public function getEntityManager()
     {
         return $this->em;
