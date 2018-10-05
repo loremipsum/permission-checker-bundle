@@ -1,8 +1,10 @@
 <?php
 
-namespace LoremIpsum\PermissionCheckerBundle;
+namespace LoremIpsum\PermissionCheckerBundle\Permission;
 
+use LoremIpsum\PermissionCheckerBundle\AbstractPermission;
 use LoremIpsum\PermissionCheckerBundle\Exception\InvalidPermissionException;
+use LoremIpsum\PermissionCheckerBundle\Guardable;
 
 class GuardPermission extends AbstractPermission
 {

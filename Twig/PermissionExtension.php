@@ -2,8 +2,8 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Twig;
 
-use LoremIpsum\PermissionCheckerBundle\GuardPermission;
 use LoremIpsum\PermissionCheckerBundle\Guardable;
+use LoremIpsum\PermissionCheckerBundle\Permission\GuardPermission;
 use LoremIpsum\PermissionCheckerBundle\PermissionCheckerInterface;
 
 class PermissionExtension extends \Twig_Extension
