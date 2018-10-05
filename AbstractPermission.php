@@ -20,18 +20,6 @@ abstract class AbstractPermission implements Permission
     }
 
     /**
-     * @return bool|null
-     */
-    public function preCheck()
-    {
-        if ($this->checker->isAdmin()) {
-            return true;
-        }
-
-        return null;
-    }
-
-    /**
      * @return string
      */
     public function getAction()

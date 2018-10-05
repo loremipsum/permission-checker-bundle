@@ -57,12 +57,24 @@ class PermissionChecker implements PermissionCheckerInterface
         return $this->em;
     }
 
+    public function has(Permission $permission)
+    {
+        $permission->setPermissionChecker($this);
+        return $permission->isGranted();
+    }
+
+    public function mustHave(Permission $permission)
+    {
+        if (! $this->has($permission)) {
+            throw new PermissionDeniedException($permission);
+        }
+    }
+
     public function getUser()
     {
         if (! $this->user && null !== ($token = $this->tokenStorage->getToken()) && is_object($user = $token->getUser())) {
             $this->user = $user;
         }
-
         return $this->user;
     }
 
@@ -74,25 +86,6 @@ class PermissionChecker implements PermissionCheckerInterface
     public function isSuperAdmin()
     {
         return $this->hasRole(User::ROLE_SUPER_ADMIN);
-    }
-
-    public function has(Permission $permission)
-    {
-        $permission->setPermissionChecker($this);
-
-        $preCheck = $permission->preCheck();
-        if ($preCheck !== null) {
-            return $preCheck;
-        }
-
-        return $permission->isGranted();
-    }
-
-    public function mustHave(Permission $permission)
-    {
-        if (! $this->has($permission)) {
-            throw new PermissionDeniedException($permission);
-        }
     }
 
     /**

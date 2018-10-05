@@ -5,11 +5,6 @@ namespace LoremIpsum\PermissionCheckerBundle;
 interface Permission
 {
     /**
-     * @return bool|null
-     */
-    public function preCheck();
-
-    /**
      * @return bool
      */
     public function isGranted();
