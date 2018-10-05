@@ -18,24 +18,24 @@ class GuardPermission extends AbstractPermission
 
     /**
      * @param string $action
-     * @param Guardable $entity
+     * @param Guardable $guard
      *
      * @throws InvalidPermissionException
      */
-    public function __construct($action, $entity)
+    public function __construct($action, $guard)
     {
-        if (! $entity instanceof Guardable) {
-            throw new InvalidPermissionException($this, "Invalid permission for " . get_class($entity) . " '$entity': has to implement Guardable");
+        if (! $guard instanceof Guardable) {
+            throw new InvalidPermissionException($this, "Guard permission object " . get_class($guard) . " has to implement Guardable");
         }
         $this->action = $action;
-        $this->guard  = $entity;
+        $this->guard  = $guard;
     }
 
     public function isGranted()
     {
         $permission = $this->guard->getPermission($this->action);
         if (! $permission) {
-            throw new InvalidPermissionException($this, "Invalid permission action '{$this->action}' for " . get_class($this->guard) . " '{$this->guard}'");
+            throw new InvalidPermissionException($this, "Invalid permission action '{$this->action}' for " . get_class($this->guard));
         }
         return $this->checker->has($permission);
     }

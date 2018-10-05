@@ -9,9 +9,7 @@ interface Guardable
      *
      * @param string $action see GuardPermission constants
      *
-     * @return Permission|null
+     * @return Permission
      */
     public function getPermission($action);
-
-    public function __toString();
 }
