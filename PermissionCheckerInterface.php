@@ -2,7 +2,6 @@
 
 namespace LoremIpsum\PermissionCheckerBundle;
 
-use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Exception\PermissionDeniedException;
 
@@ -14,7 +13,7 @@ interface PermissionCheckerInterface
     public function getEntityManager();
 
     /**
-     * @return User
+     * @return object
      */
     public function getUser();
 

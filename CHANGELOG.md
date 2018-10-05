@@ -1,5 +1,13 @@
 # PermissionCheckerBundle Changelog
 
+## [0.2.1] - 2018-10-05
+### Add
+- Setup phpunit tests
+
+### Change
+- Allow to set admin roles in configuration
+- Do not use App\Entity\User
+
 ## [0.2.0] - 2018-10-05
 ### Add
 - Add AllowPermission and DenyPermission

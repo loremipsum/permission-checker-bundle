@@ -2,7 +2,6 @@
 
 namespace LoremIpsum\PermissionCheckerBundle;
 
-use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Exception\PermissionDeniedException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -26,20 +25,27 @@ class PermissionChecker implements PermissionCheckerInterface
     protected $em;
 
     /**
-     * @var User
+     * @var object
      */
     protected $user;
+
+    /**
+     * @var array
+     */
+    protected $roles;
 
     /**
      * @param AuthorizationCheckerInterface $securityChecker
      * @param TokenStorageInterface $tokenStorage
      * @param EntityManagerInterface $em
+     * @param array $roles
      */
-    public function __construct(AuthorizationCheckerInterface $securityChecker, TokenStorageInterface $tokenStorage, EntityManagerInterface $em)
+    public function __construct(AuthorizationCheckerInterface $securityChecker, TokenStorageInterface $tokenStorage, EntityManagerInterface $em, $roles)
     {
         $this->securityChecker = $securityChecker;
         $this->tokenStorage    = $tokenStorage;
         $this->em              = $em;
+        $this->roles           = (array)$roles;
     }
 
     public function getSecurityChecker()
@@ -80,12 +86,12 @@ class PermissionChecker implements PermissionCheckerInterface
 
     public function isAdmin()
     {
-        return $this->hasRole(User::ROLE_ADMIN) || $this->isSuperAdmin();
+        return (isset($this->roles['admin']) && $this->hasRole($this->roles['admin'])) || $this->isSuperAdmin();
     }
 
     public function isSuperAdmin()
     {
-        return $this->hasRole(User::ROLE_SUPER_ADMIN);
+        return isset($this->roles['super_admin']) && $this->hasRole($this->roles['super_admin']);
     }
 
     /**

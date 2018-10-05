@@ -2,7 +2,6 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Tests;
 
-use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Permission;
 use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
@@ -15,17 +14,17 @@ class PermissionCheckerTest extends TestCase
 {
     public function testPermissionChecker()
     {
-        /** @var AuthorizationCheckerInterface|\PHPUnit_Framework_MockObject_MockObject $securityChecker */
-        /** @var TokenStorage|\PHPUnit_Framework_MockObject_MockObject $tokenStorage */
-        /** @var EntityManagerInterface|\PHPUnit_Framework_MockObject_MockObject $entityManager */
-        /** @var Permission|\PHPUnit_Framework_MockObject_MockObject $permission */
+        /** @var AuthorizationCheckerInterface $securityChecker */
+        /** @var TokenStorage $tokenStorage */
+        /** @var EntityManagerInterface $entityManager */
+        /** @var Permission $permission */
 
-        $user = new User();
+        $user = new \stdClass();
 
         $securityChecker = $this->getMockBuilder(AuthorizationCheckerInterface::class)->getMock();
         $securityChecker->expects($this->any())->method('isGranted')->will($this->returnValueMap([
-            [User::ROLE_ADMIN, null, true],
-            [User::ROLE_SUPER_ADMIN, null, false]
+            ['ROLE_ADMIN', null, true],
+            ['ROLE_SUPER_ADMIN', null, false],
         ]));
 
         $token = $this->getMockBuilder(TokenInterface::class)->getMock();
@@ -36,8 +35,10 @@ class PermissionCheckerTest extends TestCase
 
         $entityManager = $this->getMockBuilder(EntityManagerInterface::class)->disableOriginalConstructor()->getMock();
 
-        $checker = new PermissionChecker($securityChecker, $tokenStorage, $entityManager);
+        $checker = new PermissionChecker($securityChecker, $tokenStorage, $entityManager, ['admin' => 'ROLE_ADMIN', 'super_admin' => 'ROLE_SUPER_ADMIN']);
 
+        $this->assertSame($securityChecker, $checker->getSecurityChecker());
+        $this->assertSame($tokenStorage, $checker->getTokenStorage());
         $this->assertSame($entityManager, $checker->getEntityManager());
         $this->assertSame($user, $checker->getUser());
 
