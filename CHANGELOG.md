@@ -6,6 +6,7 @@
 
 ### Change
 - Guardable getPermission() must return Permission
+- Move GuardPermission into Permission namespace
 
 ### Remove
 - Remove __toString() from Guardable interface
