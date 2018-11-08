@@ -2,7 +2,7 @@
     "name": "loremipsum/permission-checker-bundle",
     "type": "symfony-bundle",
     "description": "Symfony PermissionCheckerBundle",
-    "keywords": ["router"],
+    "keywords": ["security"],
     "homepage": "https://www.loremipsum.at",
     "license": "proprietary",
     "require": {
