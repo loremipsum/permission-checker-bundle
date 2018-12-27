@@ -1,10 +1,10 @@
 {
     "name": "loremipsum/permission-checker-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony PermissionCheckerBundle",
-    "keywords": ["security"],
+    "description": "Symfony bundle to handle authorization, i.e. check permission to perform action on a resource.",
+    "keywords": ["security", "authorization", "permission"],
     "homepage": "https://www.loremipsum.at",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": ">=7.0",
         "symfony/http-kernel": "^3.4 || ^4.0",
