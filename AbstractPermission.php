@@ -14,6 +14,11 @@ abstract class AbstractPermission implements Permission
      */
     protected $action;
 
+    public function __construct($action)
+    {
+        $this->action = $action;
+    }
+
     public function setPermissionChecker(PermissionChecker $checker)
     {
         $this->checker = $checker;
