@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('super_admin')->isRequired()->end()
                     ->end()
                 ->end()
+                ->scalarNode('default_permission')->cannotBeEmpty()->end()
             ->end()
         ;
 

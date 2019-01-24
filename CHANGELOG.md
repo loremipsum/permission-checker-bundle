@@ -1,5 +1,12 @@
 # PermissionCheckerBundle Changelog
 
+## [0.2.2] - 2019-01-24
+### Add
+- `hasActionPermission` twig function using permission class configured via `default_permission`
+
+### Change
+- Add constructor to `AbstractPermission` class
+
 ## [0.2.1] - 2018-10-05
 ### Add
 - Setup phpunit tests

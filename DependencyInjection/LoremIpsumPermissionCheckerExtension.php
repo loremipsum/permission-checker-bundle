@@ -3,6 +3,7 @@
 namespace LoremIpsum\PermissionCheckerBundle\DependencyInjection;
 
 use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
+use LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -20,5 +21,8 @@ class LoremIpsumPermissionCheckerExtension extends Extension
 
         $definition = $container->getDefinition(PermissionChecker::class);
         $definition->setArgument('$roles', $config['roles']);
+
+        $definition = $container->getDefinition(PermissionExtension::class);
+        $definition->setArgument('$actionPermission', $config['default_permission'] ?? null);
     }
 }

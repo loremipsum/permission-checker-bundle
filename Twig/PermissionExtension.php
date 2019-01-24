@@ -5,6 +5,7 @@ namespace LoremIpsum\PermissionCheckerBundle\Twig;
 use LoremIpsum\PermissionCheckerBundle\Guardable;
 use LoremIpsum\PermissionCheckerBundle\Permission\GuardPermission;
 use LoremIpsum\PermissionCheckerBundle\PermissionCheckerInterface;
+use Twig\Error\Error;
 
 class PermissionExtension extends \Twig_Extension
 {
@@ -13,9 +14,20 @@ class PermissionExtension extends \Twig_Extension
      */
     protected $permissionChecker;
 
-    public function __construct(PermissionCheckerInterface $permissionChecker)
+    /**
+     * @var string|null
+     */
+    protected $actionPermission;
+
+    /**
+     * PermissionExtension constructor.
+     * @param PermissionCheckerInterface $permissionChecker
+     * @param string|null                $actionPermission
+     */
+    public function __construct(PermissionCheckerInterface $permissionChecker, $actionPermission)
     {
         $this->permissionChecker = $permissionChecker;
+        $this->actionPermission  = $actionPermission;
     }
 
     public function getFunctions()
@@ -26,6 +38,7 @@ class PermissionExtension extends \Twig_Extension
             new \Twig_Function('hasUpdatePermission', [$this, 'hasUpdatePermission']),
             new \Twig_Function('hasDeletePermission', [$this, 'hasDeletePermission']),
             new \Twig_Function('hasGuardPermission', [$this, 'hasGuardPermission']),
+            new \Twig_Function('hasActionPermission', [$this, 'hasActionPermission']),
         ];
     }
 
@@ -52,5 +65,13 @@ class PermissionExtension extends \Twig_Extension
     public function hasGuardPermission(Guardable $guard, $action)
     {
         return $this->permissionChecker->has($guard->getPermission($action));
+    }
+
+    public function hasActionPermission($action)
+    {
+        if (! $this->actionPermission) {
+            throw new Error("Configure 'lorem_ipsum_permission_checker.default_permission' to be used by hasActionPermission.");
+        }
+        return $this->permissionChecker->has(new $this->actionPermission($action));
     }
 }
