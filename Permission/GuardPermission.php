@@ -8,10 +8,10 @@ use LoremIpsum\PermissionCheckerBundle\Guardable;
 
 class GuardPermission extends AbstractPermission
 {
-    const CREATE = 'CREATE';
-    const READ = 'READ';
-    const UPDATE = 'UPDATE';
-    const DELETE = 'DELETE';
+    const CREATE = 'create';
+    const READ = 'read';
+    const UPDATE = 'update';
+    const DELETE = 'delete';
 
     /**
      * @var Guardable
