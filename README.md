@@ -6,7 +6,7 @@ This bundle is similar to the symfony voter but uses permission objects.
 ## Configuration
 
 ```yaml
-# config/packages/loremipsum_permission_checker.yaml 
+# config/packages/lorem_ipsum_permission_checker.yaml 
 
 lorem_ipsum_permission_checker:
     roles:
