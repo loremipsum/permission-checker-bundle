@@ -2,9 +2,8 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Permission;
 
-use LoremIpsum\PermissionCheckerBundle\AbstractPermission;
 use LoremIpsum\PermissionCheckerBundle\Exception\InvalidPermissionException;
-use LoremIpsum\PermissionCheckerBundle\Guardable;
+use LoremIpsum\PermissionCheckerBundle\Model\Guardable;
 
 class GuardPermission extends AbstractPermission
 {
@@ -21,10 +20,9 @@ class GuardPermission extends AbstractPermission
     /**
      * @param string    $action
      * @param Guardable $guard
-     *
      * @throws InvalidPermissionException
      */
-    public function __construct($action, $guard)
+    public function __construct(string $action, Guardable $guard)
     {
         parent::__construct($action);
 
@@ -34,7 +32,7 @@ class GuardPermission extends AbstractPermission
         $this->guard = $guard;
     }
 
-    public function isGranted()
+    public function isGranted(): bool
     {
         $permission = $this->guard->getPermission($this->action);
         if (! $permission) {

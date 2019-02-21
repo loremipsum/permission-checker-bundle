@@ -3,7 +3,7 @@
 namespace LoremIpsum\PermissionCheckerBundle\Tests;
 
 use Doctrine\ORM\EntityManagerInterface;
-use LoremIpsum\PermissionCheckerBundle\Permission;
+use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
 use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -17,7 +17,7 @@ class PermissionCheckerTest extends TestCase
         /** @var AuthorizationCheckerInterface $securityChecker */
         /** @var TokenStorage $tokenStorage */
         /** @var EntityManagerInterface $entityManager */
-        /** @var Permission $permission */
+        /** @var PermissionInterface $permission */
 
         $user = new \stdClass();
 
@@ -45,7 +45,7 @@ class PermissionCheckerTest extends TestCase
         $this->assertTrue($checker->isAdmin());
         $this->assertFalse($checker->isSuperAdmin());
 
-        $permission = $this->getMockBuilder(Permission::class)->getMock();
+        $permission = $this->getMockBuilder(PermissionInterface::class)->getMock();
         $permission->expects($this->once())->method('isGranted')->will($this->returnValue(true));
         $this->assertTrue($checker->has($permission));
     }

@@ -1,8 +1,10 @@
 <?php
 
-namespace LoremIpsum\PermissionCheckerBundle;
+namespace LoremIpsum\PermissionCheckerBundle\Permission;
 
-abstract class AbstractPermission implements Permission
+use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
+
+abstract class AbstractPermission implements PermissionInterface
 {
     /**
      * @var PermissionChecker
@@ -10,10 +12,13 @@ abstract class AbstractPermission implements Permission
     protected $checker;
 
     /**
-     * @var string
+     * @var mixed
      */
     protected $action;
 
+    /**
+     * @param mixed $action
+     */
     public function __construct($action)
     {
         $this->action = $action;
@@ -24,9 +29,6 @@ abstract class AbstractPermission implements Permission
         $this->checker = $checker;
     }
 
-    /**
-     * @return string
-     */
     public function getAction()
     {
         return $this->action;

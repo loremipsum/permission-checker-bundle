@@ -1,5 +1,13 @@
 # PermissionCheckerBundle Changelog
 
+## [0.3.0-dev] - 2019-02-21
+### Change
+- **BC-BREAK** Set supported php version to ^7.0
+- **BC-BREAK** Move AbstractPermission to Permission namespace
+- **BC-BREAK** Rename Permission to Permission\PermissionInterface
+- **BC-BREAK** Move Guardable to Model namespace
+- **BC-BREAK** Move PermissionCheckerInterface to Model namespace
+
 ## [0.2.2] - 2019-01-24
 ### Add
 - `hasActionPermission` twig function using permission class configured via `default_permission`
@@ -21,11 +29,11 @@
 
 ### Change
 - Guardable getPermission() must return Permission
-- Move GuardPermission into Permission namespace
+- **BC-BREAK** Move GuardPermission into Permission namespace
 
 ### Remove
-- Remove __toString() from Guardable interface
-- Remove preCheck() from Permission interface
+- **BC-BREAK** Remove __toString() from Guardable interface
+- **BC-BREAK** Remove preCheck() from Permission interface
 
 ## [0.1.2] - 2018-10-04
 ### Change

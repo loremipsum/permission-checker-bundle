@@ -2,23 +2,23 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Exception;
 
-use LoremIpsum\PermissionCheckerBundle\Permission;
+use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
 
 class InvalidPermissionException extends \RuntimeException
 {
+    /**
+     * @var PermissionInterface
+     */
     private $permission;
 
-    public function __construct(Permission $permission, $message)
+    public function __construct(PermissionInterface $permission, string $message)
     {
         $this->permission = $permission;
 
         parent::__construct($message);
     }
 
-    /**
-     * @return Permission
-     */
-    public function getPermission()
+    public function getPermission(): PermissionInterface
     {
         return $this->permission;
     }

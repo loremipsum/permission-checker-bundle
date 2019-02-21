@@ -3,7 +3,7 @@ services:
         autowire: true
         public: false
 
-    LoremIpsum\PermissionCheckerBundle\PermissionCheckerInterface: '@LoremIpsum\PermissionCheckerBundle\PermissionChecker'
+    LoremIpsum\PermissionCheckerBundle\Model\PermissionCheckerInterface: '@LoremIpsum\PermissionCheckerBundle\PermissionChecker'
 
     LoremIpsum\PermissionCheckerBundle\PermissionChecker:
         class: LoremIpsum\PermissionCheckerBundle\PermissionChecker

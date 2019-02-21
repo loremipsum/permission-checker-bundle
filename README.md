@@ -36,14 +36,14 @@ $permissionChecker->mustHave(new UserPermission(UserPermission::UPDATE, $user));
 
 namespace App\Security\Permission;
 
-use LoremIpsum\PermissionCheckerBundle\AbstractPermission;
+use LoremIpsum\PermissionCheckerBundle\Permission\AbstractPermission;
 use LoremIpsum\PermissionCheckerBundle\Exception\InvalidPermissionException;
 
 class AppPermission extends AbstractPermission
 {
     const SETTINGS = 'settings';
     
-    public function isGranted()
+    public function isGranted(): bool
     {
         switch ($this->getAction()) {
             case self::SETTINGS:
@@ -62,7 +62,7 @@ class AppPermission extends AbstractPermission
 namespace App\Security\Permission;
 
 use App\Entity\User;
-use LoremIpsum\PermissionCheckerBundle\AbstractPermission;
+use LoremIpsum\PermissionCheckerBundle\Permission\AbstractPermission;
 use LoremIpsum\PermissionCheckerBundle\Exception\InvalidPermissionException;
 
 class UserPermission extends AbstractPermission
@@ -81,7 +81,7 @@ class UserPermission extends AbstractPermission
         $this->user = $user;
     }
 
-    public function isGranted()
+    public function isGranted(): bool
     {
         switch ($this->getAction()) {
             case self::READ:

@@ -2,32 +2,24 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Exception;
 
-use LoremIpsum\PermissionCheckerBundle\Permission;
+use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PermissionDeniedException extends AccessDeniedException
 {
     /**
-     * @var Permission
+     * @var PermissionInterface
      */
     private $permission;
 
-    /**
-     * PermissionDeniedException constructor.
-     *
-     * @param Permission $permission
-     */
-    public function __construct(Permission $permission)
+    public function __construct(PermissionInterface $permission)
     {
         $this->permission = $permission;
 
         parent::__construct();
     }
 
-    /**
-     * @return Permission
-     */
-    public function getPermission()
+    public function getPermission(): PermissionInterface
     {
         return $this->permission;
     }

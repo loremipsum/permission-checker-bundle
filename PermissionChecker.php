@@ -4,6 +4,8 @@ namespace LoremIpsum\PermissionCheckerBundle;
 
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Exception\PermissionDeniedException;
+use LoremIpsum\PermissionCheckerBundle\Model\PermissionCheckerInterface;
+use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
@@ -36,9 +38,9 @@ class PermissionChecker implements PermissionCheckerInterface
 
     /**
      * @param AuthorizationCheckerInterface $securityChecker
-     * @param TokenStorageInterface $tokenStorage
-     * @param EntityManagerInterface $em
-     * @param array $roles
+     * @param TokenStorageInterface         $tokenStorage
+     * @param EntityManagerInterface        $em
+     * @param array|string                  $roles
      */
     public function __construct(AuthorizationCheckerInterface $securityChecker, TokenStorageInterface $tokenStorage, EntityManagerInterface $em, $roles)
     {
@@ -48,28 +50,28 @@ class PermissionChecker implements PermissionCheckerInterface
         $this->roles           = (array)$roles;
     }
 
-    public function getSecurityChecker()
+    public function getSecurityChecker(): AuthorizationCheckerInterface
     {
         return $this->securityChecker;
     }
 
-    public function getTokenStorage()
+    public function getTokenStorage(): TokenStorageInterface
     {
         return $this->tokenStorage;
     }
 
-    public function getEntityManager()
+    public function getEntityManager(): EntityManagerInterface
     {
         return $this->em;
     }
 
-    public function has(Permission $permission)
+    public function has(PermissionInterface $permission): bool
     {
         $permission->setPermissionChecker($this);
         return $permission->isGranted();
     }
 
-    public function mustHave(Permission $permission)
+    public function mustHave(PermissionInterface $permission)
     {
         if (! $this->has($permission)) {
             throw new PermissionDeniedException($permission);
@@ -84,12 +86,12 @@ class PermissionChecker implements PermissionCheckerInterface
         return $this->user;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return (isset($this->roles['admin']) && $this->hasRole($this->roles['admin'])) || $this->isSuperAdmin();
     }
 
-    public function isSuperAdmin()
+    public function isSuperAdmin(): bool
     {
         return isset($this->roles['super_admin']) && $this->hasRole($this->roles['super_admin']);
     }
@@ -98,7 +100,7 @@ class PermissionChecker implements PermissionCheckerInterface
      * @param string $role
      * @return bool
      */
-    public function hasRole($role)
+    public function hasRole($role): bool
     {
         return $this->securityChecker->isGranted($role);
     }
