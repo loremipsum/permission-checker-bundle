@@ -1,6 +1,6 @@
 # PermissionCheckerBundle Changelog
 
-## [0.3.0-dev] - 2019-02-21
+## [Unreleased 0.3.0]
 ### Change
 - **BC-BREAK** Set supported php version to ^7.0
 - **BC-BREAK** Move AbstractPermission to Permission namespace
