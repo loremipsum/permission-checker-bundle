@@ -2,7 +2,7 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\DependencyInjection;
 
-use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
+use LoremIpsum\PermissionCheckerBundle\Utils\PermissionChecker;
 use LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

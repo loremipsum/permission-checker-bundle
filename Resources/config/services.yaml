@@ -3,11 +3,9 @@ services:
         autowire: true
         public: false
 
-    LoremIpsum\PermissionCheckerBundle\Model\PermissionCheckerInterface: '@LoremIpsum\PermissionCheckerBundle\PermissionChecker'
+    LoremIpsum\PermissionCheckerBundle\Model\PermissionCheckerInterface: '@LoremIpsum\PermissionCheckerBundle\Utils\PermissionChecker'
 
-    LoremIpsum\PermissionCheckerBundle\PermissionChecker:
-        class: LoremIpsum\PermissionCheckerBundle\PermissionChecker
+    LoremIpsum\PermissionCheckerBundle\Utils\PermissionChecker:
 
     LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension:
-        class: LoremIpsum\PermissionCheckerBundle\Twig\PermissionExtension
         tags: ['twig.extension']

@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremIpsum\PermissionCheckerBundle;
+namespace LoremIpsum\PermissionCheckerBundle\Utils;
 
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Exception\PermissionDeniedException;

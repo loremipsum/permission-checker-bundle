@@ -2,7 +2,7 @@
 
 namespace LoremIpsum\PermissionCheckerBundle\Permission;
 
-use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
+use LoremIpsum\PermissionCheckerBundle\Utils\PermissionChecker;
 
 abstract class AbstractPermission implements PermissionInterface
 {

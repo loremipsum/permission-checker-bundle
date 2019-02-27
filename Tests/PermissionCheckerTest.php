@@ -4,7 +4,7 @@ namespace LoremIpsum\PermissionCheckerBundle\Tests;
 
 use Doctrine\ORM\EntityManagerInterface;
 use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
-use LoremIpsum\PermissionCheckerBundle\PermissionChecker;
+use LoremIpsum\PermissionCheckerBundle\Utils\PermissionChecker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

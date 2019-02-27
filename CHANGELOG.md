@@ -7,6 +7,7 @@
 - **BC-BREAK** Rename Permission to Permission\PermissionInterface
 - **BC-BREAK** Move Guardable to Model namespace
 - **BC-BREAK** Move PermissionCheckerInterface to Model namespace
+- **BC-BREAK** Move PermissionChecker to Utils namespace
 
 ## [0.2.2] - 2019-01-24
 ### Add
