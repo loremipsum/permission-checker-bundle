@@ -10,9 +10,7 @@ interface PermissionCheckerInterface
 {
     public function getEntityManager(): EntityManagerInterface;
 
-    /**
-     * @return object
-     */
+    /** @return object */
     public function getUser();
 
     public function isAdmin(): bool;

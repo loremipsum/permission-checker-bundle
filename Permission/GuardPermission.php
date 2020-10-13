@@ -12,9 +12,7 @@ class GuardPermission extends AbstractPermission
     const UPDATE = 'update';
     const DELETE = 'delete';
 
-    /**
-     * @var Guardable
-     */
+    /** @var Guardable */
     private $guard;
 
     /**

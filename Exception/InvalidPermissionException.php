@@ -7,9 +7,7 @@ use RuntimeException;
 
 class InvalidPermissionException extends RuntimeException
 {
-    /**
-     * @var PermissionInterface
-     */
+    /** @var PermissionInterface */
     private $permission;
 
     public function __construct(PermissionInterface $permission, string $message)

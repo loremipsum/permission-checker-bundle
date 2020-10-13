@@ -7,11 +7,9 @@ use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
 interface Guardable
 {
     /**
-     * @see GuardPermission
-     *
      * @param string $action see GuardPermission constants
-     *
      * @return PermissionInterface
+     * @see GuardPermission
      */
-    public function getPermission($action): PermissionInterface;
+    public function getPermission(string $action): PermissionInterface;
 }

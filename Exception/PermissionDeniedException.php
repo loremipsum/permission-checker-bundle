@@ -7,9 +7,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PermissionDeniedException extends AccessDeniedException
 {
-    /**
-     * @var PermissionInterface
-     */
+    /** @var PermissionInterface */
     private $permission;
 
     public function __construct(PermissionInterface $permission)

@@ -11,14 +11,10 @@ use Twig\TwigFunction;
 
 class PermissionExtension extends AbstractExtension
 {
-    /**
-     * @var PermissionCheckerInterface
-     */
+    /** @var PermissionCheckerInterface */
     protected $permissionChecker;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     protected $actionPermission;
 
     public function __construct(PermissionCheckerInterface $permissionChecker, ?string $actionPermission)

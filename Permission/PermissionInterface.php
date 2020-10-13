@@ -10,8 +10,6 @@ interface PermissionInterface
 
     public function setPermissionChecker(PermissionChecker $checker);
 
-    /**
-     * @return mixed
-     */
+    /** @return mixed */
     public function getAction();
 }

@@ -11,29 +11,19 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class PermissionChecker implements PermissionCheckerInterface
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
+    /** @var AuthorizationCheckerInterface */
     protected $securityChecker;
 
-    /**
-     * @var TokenStorageInterface
-     */
+    /** @var TokenStorageInterface */
     protected $tokenStorage;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     protected $em;
 
-    /**
-     * @var object
-     */
+    /** @var object */
     protected $user;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $roles;
 
     /**
@@ -100,7 +90,7 @@ class PermissionChecker implements PermissionCheckerInterface
      * @param string $role
      * @return bool
      */
-    public function hasRole($role): bool
+    public function hasRole(string $role): bool
     {
         return $this->securityChecker->isGranted($role);
     }
