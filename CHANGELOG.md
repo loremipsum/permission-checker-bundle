@@ -1,5 +1,9 @@
 # PermissionCheckerBundle Changelog
 
+## [0.3.3] - 2020-10-13
+### Fix
+- Fix security issue
+
 ## [0.3.2] - 2020-10-13
 ### Change
 - Cleanup coding style

@@ -2,16 +2,22 @@
     "name": "loremipsum/permission-checker-bundle",
     "type": "symfony-bundle",
     "description": "Symfony bundle to handle authorization, i.e. check permission to perform action on a resource.",
-    "keywords": ["security", "authorization", "permission"],
+    "keywords": [
+        "security",
+        "authorization",
+        "permission"
+    ],
     "homepage": "https://www.loremipsum.at",
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "symfony/http-kernel": "^4.0 | ^5.0",
-        "symfony/security": "^4.0 | ^5.0"
+        "symfony/http-kernel": "^4.4|^5.1",
+        "symfony/security": "^4.4|^5.1"
     },
     "autoload": {
-        "psr-4": { "LoremIpsum\\PermissionCheckerBundle\\": "" },
+        "psr-4": {
+            "LoremIpsum\\PermissionCheckerBundle\\": ""
+        },
         "exclude-from-classmap": [
             "/Tests/"
         ]
