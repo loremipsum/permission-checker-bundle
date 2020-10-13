@@ -3,8 +3,9 @@
 namespace LoremIpsum\PermissionCheckerBundle\Exception;
 
 use LoremIpsum\PermissionCheckerBundle\Permission\PermissionInterface;
+use RuntimeException;
 
-class InvalidPermissionException extends \RuntimeException
+class InvalidPermissionException extends RuntimeException
 {
     /**
      * @var PermissionInterface

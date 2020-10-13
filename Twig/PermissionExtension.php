@@ -6,8 +6,10 @@ use LoremIpsum\PermissionCheckerBundle\Model\Guardable;
 use LoremIpsum\PermissionCheckerBundle\Permission\GuardPermission;
 use LoremIpsum\PermissionCheckerBundle\Model\PermissionCheckerInterface;
 use Twig\Error\Error;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class PermissionExtension extends \Twig_Extension
+class PermissionExtension extends AbstractExtension
 {
     /**
      * @var PermissionCheckerInterface
@@ -28,12 +30,12 @@ class PermissionExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('hasCreatePermission', [$this, 'hasCreatePermission']),
-            new \Twig_Function('hasReadPermission', [$this, 'hasReadPermission']),
-            new \Twig_Function('hasUpdatePermission', [$this, 'hasUpdatePermission']),
-            new \Twig_Function('hasDeletePermission', [$this, 'hasDeletePermission']),
-            new \Twig_Function('hasGuardPermission', [$this, 'hasGuardPermission']),
-            new \Twig_Function('hasActionPermission', [$this, 'hasActionPermission']),
+            new TwigFunction('hasCreatePermission', [$this, 'hasCreatePermission']),
+            new TwigFunction('hasReadPermission', [$this, 'hasReadPermission']),
+            new TwigFunction('hasUpdatePermission', [$this, 'hasUpdatePermission']),
+            new TwigFunction('hasDeletePermission', [$this, 'hasDeletePermission']),
+            new TwigFunction('hasGuardPermission', [$this, 'hasGuardPermission']),
+            new TwigFunction('hasActionPermission', [$this, 'hasActionPermission']),
         ];
     }
 

@@ -1,5 +1,9 @@
 # PermissionCheckerBundle Changelog
 
+## [0.3.1] - 2020-10-13
+### Change
+- Update dependencies
+
 ## [0.3.0] - 2020-06-21
 ### Change
 - **BC-BREAK** Set supported php version to ^7.1
