@@ -12,7 +12,9 @@ abstract class AbstractPermission implements PermissionInterface
     /** @var mixed */
     protected $action;
 
-    /** @param mixed $action */
+    /**
+     * @param mixed $action
+     */
     public function __construct($action)
     {
         $this->action = $action;
