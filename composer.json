@@ -10,7 +10,7 @@
     "homepage": "https://www.loremipsum.at",
     "license": "MIT",
     "require": {
-        "php": "^7.1",
+        "php": ">=7.1",
         "symfony/http-kernel": "^4.0 || ^5.0 || ^6.0 || ^7.0",
         "symfony/security-bundle": "^4.0 || ^5.0 || ^6.0 || ^7.0"
     },
